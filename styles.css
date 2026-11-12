@@ -109,6 +109,7 @@ main { max-width: 1240px; margin: 0 auto; padding: clamp(20px, 3.4vw, 44px) clam
 .today .eyebrow { display: inline-block; background: var(--ink); color: #fff; padding: 4px 13px; border-radius: 999px; }
 .today h2 { font-size: clamp(34px, 5.4vw, 72px); }
 mark { background: linear-gradient(transparent 56%, var(--green-bright) 56%, var(--green-bright) 94%, transparent 94%); color: inherit; padding: 0 .06em; }
+.hl { color: var(--blue); }
 .arch { margin-top: clamp(28px, 4vw, 48px); }
 .arch-title { font-size: 14px; font-weight: 700; color: var(--muted); margin: 0 0 18px; }
 .arch-row + .arch-title { margin-top: 30px; }
