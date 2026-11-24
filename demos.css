@@ -243,6 +243,247 @@
 .d-arc .d-cur { animation: d-arccur var(--t) ease-in-out infinite; }
 @keyframes d-arccur { 0% { transform: translate(210px, 128px); } 36%, 52% { transform: translate(80px, 46px); } 100% { transform: translate(210px, 128px); } }
 
+/* ═════ 업무 및 기타 ═════
+   기본 모양은 '다 된 화면'으로 두고, 움직임(keyframes)으로 숨겼다 보여 줍니다.
+   그래서 움직임 줄이기를 켠 기기에서도 완성된 화면이 보입니다. */
+
+/* ── 소개·홍보 페이지: 첫 화면 → 스크롤하면 카드가 떠오름 ── */
+.d-land { background: #fff; }
+.d-land .d-pg { position: absolute; left: 0; top: 0; width: 100%; animation: d-lscroll var(--t) ease-in-out infinite; }
+.d-land .d-nav { left: 0; top: 0; width: 100%; height: 22px; z-index: 3; background: rgba(255, 255, 255, .95); border-bottom: 1px solid #ECE9E3; }
+.d-land .d-logo { left: 12px; top: 8px; width: 46px; height: 7px; border-radius: 4px; background: #111; }
+.d-land .d-nb { right: 10px; top: 4px; padding: 0 8px; border-radius: 99px; background: #111; color: #fff; font-size: 8px; line-height: 14px; }
+.d-land .d-hero { left: 0; top: 22px; width: 100%; height: 118px; background: linear-gradient(135deg, #1E1B4B, #4F46E5); }
+.d-land .d-k { left: 18px; top: 14px; padding: 0 7px; border-radius: 99px; background: rgba(255, 255, 255, .18); color: #C7D2FE; font-size: 8px; line-height: 14px; }
+.d-land .d-t1 { left: 18px; top: 34px; width: 170px; height: 13px; border-radius: 4px; background: #fff; }
+.d-land .d-t2 { left: 18px; top: 52px; width: 120px; height: 13px; border-radius: 4px; background: #fff; }
+.d-land .d-sub { left: 18px; top: 73px; width: 150px; height: 6px; border-radius: 3px; background: rgba(255, 255, 255, .45); }
+.d-land .d-cta { left: 18px; top: 88px; padding: 0 12px; border-radius: 99px; background: #34E05B; color: #111; font-size: 10px; line-height: 20px; animation: d-cta var(--t) ease-in-out infinite; }
+.d-land .d-fc { top: 152px; width: 84px; height: 62px; border-radius: 10px; background: #F3F2FF; border: 1px solid #E0DEFA; animation: d-rise1 var(--t) ease-out infinite; }
+.d-land .d-fc::before { content: ""; position: absolute; left: 10px; top: 10px; width: 16px; height: 16px; border-radius: 5px; background: #4F46E5; }
+.d-land .d-fc u { left: 10px; height: 5px; border-radius: 3px; background: #C9C6EE; }
+.d-land .d-fc u:nth-child(1) { top: 34px; width: 56px; height: 6px; background: #111; }
+.d-land .d-fc u:nth-child(2) { top: 46px; width: 44px; }
+.d-land .d-fc1 { left: 12px; }
+.d-land .d-fc2 { left: 108px; animation-name: d-rise2; }
+.d-land .d-fc3 { left: 204px; animation-name: d-rise3; }
+.d-land .d-faq { left: 12px; width: 276px; height: 20px; border-radius: 8px; background: #F6F4F0; }
+.d-land .d-faq u { left: 10px; top: 7px; width: 120px; height: 6px; border-radius: 3px; background: #CFC9BF; }
+.d-land .d-faq s { right: 10px; top: 3px; font-size: 11px; color: #76726B; }
+@keyframes d-lscroll { 0%, 18% { transform: translateY(0); } 44%, 82% { transform: translateY(-96px); } 100% { transform: translateY(0); } }
+@keyframes d-cta { 0%, 6%, 16%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(52, 224, 91, .7); } 11% { transform: scale(1.08); box-shadow: 0 0 0 7px rgba(52, 224, 91, 0); } }
+@keyframes d-rise1 { 0%, 26% { opacity: 0; transform: translateY(16px); } 38%, 88% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(0); } }
+@keyframes d-rise2 { 0%, 31% { opacity: 0; transform: translateY(16px); } 43%, 88% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(0); } }
+@keyframes d-rise3 { 0%, 36% { opacity: 0; transform: translateY(16px); } 48%, 88% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(0); } }
+
+/* ── 업무 대시보드: 필터를 바꾸면 숫자와 선 그래프가 바뀜 ── */
+.d-dash { background: #F8FAFC; }
+.d-dash .d-side { left: 0; top: 0; width: 40px; height: 100%; background: #0F172A; }
+.d-dash .d-side u { left: 12px; width: 16px; height: 16px; border-radius: 5px; background: #334155; }
+.d-dash .d-side u:nth-child(1) { top: 12px; background: #2563EB; }
+.d-dash .d-side u:nth-child(2) { top: 38px; }
+.d-dash .d-side u:nth-child(3) { top: 64px; }
+.d-dash .d-side u:nth-child(4) { top: 90px; }
+.d-dash .d-chip { top: 8px; padding: 0 9px; border-radius: 99px; border: 1.5px solid #111; background: #fff; font-size: 9px; line-height: 14px; }
+.d-dash .d-ca { left: 52px; animation: d-on-a var(--t) infinite; }
+.d-dash .d-cb { left: 112px; animation: d-on-b var(--t) infinite; }
+.d-dash .d-kpi { top: 30px; width: 74px; height: 40px; border-radius: 8px; background: #fff; border: 1px solid #E2E8F0; }
+.d-dash .d-kl { left: 8px; top: 5px; font-size: 8.5px; color: #64748B; }
+.d-dash .d-kv { left: 8px; top: 16px; font-size: 16px; font-weight: 800; letter-spacing: -.02em; }
+.d-dash .d-va { animation: d-show-a var(--t) infinite; }
+.d-dash .d-vb { opacity: 0; animation: d-show-b var(--t) infinite; }
+.d-dash .d-panel { left: 52px; top: 78px; width: 238px; height: 94px; border-radius: 8px; border: 1px solid #E2E8F0; background: repeating-linear-gradient(transparent 0 22px, #EEF2F7 22px 23px), #fff; }
+.d-dash .d-svg { position: absolute; left: 61px; top: 88px; width: 220px; height: 76px; overflow: visible; }
+.d-dash polyline { fill: none; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; stroke-dasharray: 300; stroke-dashoffset: 0; }
+.d-dash .d-la { stroke: #2563EB; animation: d-drawa var(--t) ease-out infinite; }
+.d-dash .d-lb { stroke: #7C3AED; opacity: 0; animation: d-drawb var(--t) ease-out infinite; }
+.d-dash .d-cur { animation: d-dashcur var(--t) ease-in-out infinite; }
+@keyframes d-drawa { 0%, 4% { stroke-dashoffset: 300; opacity: 1; } 30%, 42% { stroke-dashoffset: 0; opacity: 1; } 46%, 100% { stroke-dashoffset: 0; opacity: 0; } }
+@keyframes d-drawb { 0%, 45% { stroke-dashoffset: 300; opacity: 0; } 47% { stroke-dashoffset: 300; opacity: 1; } 74%, 94% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
+@keyframes d-dashcur { 0% { transform: translate(170px, 130px); } 34%, 48% { transform: translate(128px, 12px); } 90%, 100% { transform: translate(170px, 130px); } }
+
+/* ── 칸반 보드: 카드를 끌어 '진행 중' → '완료'로 ── */
+.d-kan { background: #fff; }
+.d-kan .d-col { top: 8px; width: 92px; height: 164px; border-radius: 10px; background: #EEF0F3; }
+.d-kan .d-col u { left: 9px; top: 7px; font-size: 9px; color: #5E6C84; }
+.d-kan .d-kc { width: 78px; height: 26px; border-radius: 6px; background: #fff; box-shadow: 0 1px 0 rgba(9, 30, 66, .18), 0 0 0 1px rgba(9, 30, 66, .06); }
+.d-kan .d-kc u { left: 9px; border-radius: 3px; }
+.d-kan .d-kc u:nth-child(1) { top: 7px; width: 48px; height: 5px; background: #172B4D; }
+.d-kan .d-kc u:nth-child(2) { top: 16px; width: 28px; height: 4px; background: #C1C7D0; }
+.d-kan .d-mv { left: 15px; top: 30px; z-index: 4; border-left: 3px solid #2563EB; animation: d-kmv var(--t) ease-in-out infinite; }
+.d-kan .d-mv s { right: 6px; top: 6px; width: 14px; height: 14px; border-radius: 50%; display: grid; place-items: center; background: #0F9A34; color: #fff; font-size: 9px; opacity: 0; animation: d-kok var(--t) infinite; }
+.d-kan .d-cur { animation: d-kcur var(--t) ease-in-out infinite; }
+@keyframes d-kmv {
+  0%, 10% { transform: translate(0, 0) rotate(0deg); box-shadow: 0 1px 0 rgba(9, 30, 66, .18); border-left-color: #2563EB; opacity: 1; }
+  14% { transform: translate(0, -3px) rotate(3deg); box-shadow: 0 10px 18px rgba(9, 30, 66, .22); }
+  30% { transform: translate(96px, 29px) rotate(3deg); box-shadow: 0 10px 18px rgba(9, 30, 66, .22); }
+  34%, 48% { transform: translate(96px, 32px) rotate(0deg); box-shadow: 0 1px 0 rgba(9, 30, 66, .18); }
+  52% { transform: translate(96px, 29px) rotate(3deg); box-shadow: 0 10px 18px rgba(9, 30, 66, .22); }
+  68% { transform: translate(192px, 29px) rotate(3deg); box-shadow: 0 10px 18px rgba(9, 30, 66, .22); border-left-color: #2563EB; }
+  72%, 90% { transform: translate(192px, 32px) rotate(0deg); box-shadow: 0 1px 0 rgba(9, 30, 66, .18); border-left-color: #0F9A34; opacity: 1; }
+  96% { transform: translate(192px, 32px) rotate(0deg); opacity: 0; border-left-color: #0F9A34; }
+  97% { transform: translate(0, 0) rotate(0deg); opacity: 0; border-left-color: #2563EB; }
+  100% { transform: translate(0, 0) rotate(0deg); opacity: 1; border-left-color: #2563EB; }
+}
+@keyframes d-kok { 0%, 72% { opacity: 0; transform: scale(.4); } 76%, 92% { opacity: 1; transform: scale(1); } 96%, 100% { opacity: 0; transform: scale(1); } }
+@keyframes d-kcur { 0% { transform: translate(160px, 150px); } 10% { transform: translate(56px, 44px); } 30%, 52% { transform: translate(152px, 76px); } 68%, 84% { transform: translate(248px, 76px); } 100% { transform: translate(160px, 150px); } }
+
+/* ── 일정 캘린더: 날짜를 누르면 추가 창 → 저장하면 일정이 생김 ── */
+.d-cal { background: #fff; }
+.d-cal .d-mh { left: 12px; top: 6px; font-size: 13px; font-weight: 800; }
+.d-cal .d-vw { right: 10px; top: 6px; display: flex; border: 1px solid #D1D5DB; border-radius: 6px; overflow: hidden; }
+.d-cal .d-vw u { position: static; padding: 0 7px; font-size: 8.5px; line-height: 14px; color: #6B7280; }
+.d-cal .d-vw .d-on { background: #111; color: #fff; }
+.d-cal .d-wd { left: 10px; top: 27px; width: 280px; height: 12px; }
+.d-cal .d-wd u { top: 0; font-size: 8.5px; color: #6B7280; }
+.d-cal .d-wd u:last-child { color: #DC2626; }
+.d-cal .d-grid { left: 10px; top: 40px; width: 281px; height: 133px; background-image: linear-gradient(90deg, #E5E7EB 1px, transparent 1px), linear-gradient(#E5E7EB 1px, transparent 1px); background-size: 40px 100%, 100% 33px; }
+.d-cal .d-grid u { font-size: 7.5px; font-weight: 600; color: #9CA3AF; }
+.d-cal .d-ev { width: 34px; height: 12px; border-radius: 3px; padding: 0 4px; font-size: 7.5px; line-height: 12px; }
+.d-cal .d-sel { left: 131px; top: 107px; width: 39px; height: 32px; background: rgba(37, 99, 235, .1); box-shadow: inset 0 0 0 1.5px #2563EB; opacity: 0; animation: d-csel var(--t) infinite; }
+.d-cal .d-new { left: 133px; top: 121px; background: #DCFCE7; color: #15803D; animation: d-cnew var(--t) infinite; }
+.d-cal .d-pop { left: 176px; top: 92px; z-index: 3; width: 112px; height: 80px; border-radius: 8px; background: #fff; box-shadow: 0 8px 22px rgba(0, 0, 0, .2); opacity: 0; transform-origin: top left; animation: d-cpop var(--t) infinite; }
+.d-cal .d-pt { left: 10px; top: 8px; font-size: 9px; }
+.d-cal .d-pf { left: 10px; top: 26px; width: 92px; height: 12px; border: 1px solid #D1D5DB; border-radius: 4px; }
+.d-cal .d-pf2 { top: 43px; }
+.d-cal .d-pf s { left: 4px; top: 3px; width: 50px; height: 4px; border-radius: 2px; background: #111; transform-origin: left center; animation: d-cty1 var(--t) linear infinite; }
+.d-cal .d-pf2 s { width: 34px; animation-name: d-cty2; }
+.d-cal .d-pb { right: 10px; top: 61px; padding: 0 9px; border-radius: 4px; background: #2563EB; color: #fff; font-size: 8.5px; line-height: 13px; animation: d-cpb var(--t) infinite; }
+.d-cal .d-cur { animation: d-ccur var(--t) ease-in-out infinite; }
+@keyframes d-csel { 0%, 15% { opacity: 0; } 18%, 62% { opacity: 1; } 66%, 100% { opacity: 0; } }
+@keyframes d-cpop { 0%, 18% { opacity: 0; transform: scale(.92); } 24%, 58% { opacity: 1; transform: scale(1); } 62%, 100% { opacity: 0; transform: scale(1); } }
+@keyframes d-cnew { 0%, 60% { opacity: 0; transform: scale(.6); } 66%, 94% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(1); } }
+@keyframes d-cty1 { 0%, 26% { transform: scaleX(0); } 34%, 100% { transform: scaleX(1); } }
+@keyframes d-cty2 { 0%, 34% { transform: scaleX(0); } 42%, 100% { transform: scaleX(1); } }
+@keyframes d-cpb { 0%, 52% { transform: scale(1); } 55% { transform: scale(.88); } 58%, 100% { transform: scale(1); } }
+@keyframes d-ccur { 0% { transform: translate(40px, 150px); } 14%, 22% { transform: translate(148px, 118px); } 46%, 58% { transform: translate(258px, 158px); } 100% { transform: translate(40px, 150px); } }
+
+/* ── 엑셀·표 정리: 파일을 놓으면 표 → 정렬 → 엑셀로 저장 ── */
+.d-sheet { background: #F6F4F0; }
+.d-sheet .d-drop { left: 10px; top: 12px; width: 84px; height: 130px; border: 2px dashed #B9B3A8; border-radius: 10px; animation: d-dz var(--t) infinite; }
+.d-sheet .d-drop u { left: 0; top: 104px; width: 100%; text-align: center; font-size: 8.5px; }
+.d-sheet .d-dl1 { color: #76726B; animation: d-dl1 var(--t) infinite; }
+.d-sheet .d-dl2 { color: #107C41; opacity: 0; animation: d-dl2 var(--t) infinite; }
+.d-sheet .d-file { left: 30px; top: 30px; width: 44px; height: 56px; border-radius: 4px 12px 4px 4px; background: #fff; border: 1.5px solid #107C41; animation: d-file var(--t) ease-in infinite; }
+.d-sheet .d-file u { left: 0; bottom: 8px; width: 100%; height: 14px; background: #107C41; color: #fff; font-size: 8px; line-height: 14px; text-align: center; }
+.d-sheet .d-tbl { left: 104px; top: 12px; width: 186px; height: 122px; border-radius: 8px; background: #fff; border: 1px solid #E5E7EB; overflow: hidden; }
+.d-sheet .d-th { left: 0; top: 0; width: 100%; height: 20px; background: #F3F4F6; }
+.d-sheet .d-th s { top: 4px; font-size: 8.5px; color: #374151; }
+.d-sheet .d-sort { left: 6px; padding: 0 4px; border-radius: 4px; animation: d-hsort var(--t) infinite; }
+.d-sheet .d-tr { left: 0; width: 100%; height: 20px; border-top: 1px solid #F1F1F1; background: #fff; }
+.d-sheet .d-tr s { top: 7px; height: 6px; border-radius: 3px; }
+.d-sheet .d-nm { left: 10px; background: #111; }
+.d-sheet .d-bn { left: 80px; width: 12px; background: #CBD5E1; }
+.d-sheet .d-cs { left: 118px; background: #A7D7B8; }
+.d-sheet .d-r1 { animation: d-sr1 var(--t) ease-in-out infinite; }
+.d-sheet .d-r2 { animation: d-sr2 var(--t) ease-in-out infinite; }
+.d-sheet .d-r3 { animation: d-sr3 var(--t) ease-in-out infinite; }
+.d-sheet .d-r4 { animation: d-sr4 var(--t) ease-in-out infinite; }
+.d-sheet .d-r5 { animation: d-sr5 var(--t) ease-in-out infinite; }
+.d-sheet .d-save { left: 190px; top: 146px; padding: 0 10px; border-radius: 6px; background: #107C41; color: #fff; font-size: 9px; line-height: 20px; animation: d-save var(--t) infinite; }
+.d-sheet .d-cur { animation: d-scur var(--t) ease-in-out infinite; }
+@keyframes d-file { 0% { opacity: 0; transform: translate(0, -90px) rotate(-10deg); } 4% { opacity: 1; } 16% { opacity: 1; transform: translate(0, 0) rotate(0deg) scale(1); } 22%, 100% { opacity: 0; transform: translate(0, 0) scale(.6); } }
+@keyframes d-dz { 0%, 12% { border-color: #B9B3A8; background: transparent; } 14%, 94% { border-color: #107C41; background: #EEF8F1; } 100% { border-color: #B9B3A8; background: transparent; } }
+@keyframes d-dl1 { 0%, 20% { opacity: 1; } 22%, 96% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes d-dl2 { 0%, 20% { opacity: 0; } 24%, 94% { opacity: 1; } 98%, 100% { opacity: 0; } }
+@keyframes d-hsort { 0%, 50% { background: transparent; color: #374151; } 54%, 94% { background: #DBEAFE; color: #1D4ED8; } 100% { background: transparent; color: #374151; } }
+@keyframes d-sr1 { 0%, 22% { opacity: 0; transform: translateY(0); } 26%, 56% { opacity: 1; transform: translateY(0); } 64%, 94% { opacity: 1; transform: translateY(60px); } 100% { opacity: 0; transform: translateY(60px); } }
+@keyframes d-sr2 { 0%, 24% { opacity: 0; transform: translateY(0); } 28%, 56% { opacity: 1; transform: translateY(0); } 64%, 94% { opacity: 1; transform: translateY(-20px); } 100% { opacity: 0; transform: translateY(-20px); } }
+@keyframes d-sr3 { 0%, 26% { opacity: 0; transform: translateY(0); } 30%, 56% { opacity: 1; transform: translateY(0); } 64%, 94% { opacity: 1; transform: translateY(40px); } 100% { opacity: 0; transform: translateY(40px); } }
+@keyframes d-sr4 { 0%, 28% { opacity: 0; transform: translateY(0); } 32%, 56% { opacity: 1; transform: translateY(0); } 64%, 94% { opacity: 1; transform: translateY(-20px); } 100% { opacity: 0; transform: translateY(-20px); } }
+@keyframes d-sr5 { 0%, 30% { opacity: 0; transform: translateY(0); } 34%, 56% { opacity: 1; transform: translateY(0); } 64%, 94% { opacity: 1; transform: translateY(-60px); } 100% { opacity: 0; transform: translateY(-60px); } }
+@keyframes d-save { 0%, 76% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 124, 65, .5); } 79% { transform: scale(.9); } 83% { transform: scale(1.06); box-shadow: 0 0 0 6px rgba(16, 124, 65, 0); } 87%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 124, 65, 0); } }
+@keyframes d-scur { 0% { transform: translate(60px, 160px); } 40%, 54% { transform: translate(124px, 18px); } 70%, 84% { transform: translate(222px, 152px); } 100% { transform: translate(60px, 160px); } }
+
+/* ── 문서 자동 만들기: 입력 → A4 양식에 채워짐 → PDF ── */
+.d-doc { background: #ECEAE6; }
+.d-doc .d-form { left: 10px; top: 10px; width: 112px; height: 130px; border-radius: 8px; background: #fff; }
+.d-doc .d-lb { left: 9px; font-size: 8px; color: #6B7280; }
+.d-doc .d-in { left: 9px; width: 94px; height: 15px; border: 1px solid #D1D5DB; border-radius: 4px; }
+.d-doc .d-in3 { height: 30px; }
+.d-doc .d-ty { left: 5px; height: 5px; border-radius: 3px; background: #111; transform-origin: left center; }
+.d-doc .d-ty1 { top: 4px; width: 60px; animation: d-ty1 var(--t) linear infinite; }
+.d-doc .d-ty2 { top: 4px; width: 40px; animation: d-ty2 var(--t) linear infinite; }
+.d-doc .d-ty3 { top: 6px; width: 80px; animation: d-ty3 var(--t) linear infinite; }
+.d-doc .d-ty4 { top: 17px; width: 52px; animation: d-ty4 var(--t) linear infinite; }
+.d-doc .d-btn { left: 10px; top: 148px; width: 112px; height: 22px; border-radius: 6px; background: #111; color: #fff; font-size: 9.5px; line-height: 22px; text-align: center; animation: d-dbtn var(--t) infinite; }
+.d-doc .d-a4 { left: 150px; top: 8px; width: 118px; height: 164px; background: #fff; box-shadow: 0 4px 14px rgba(0, 0, 0, .14); }
+.d-doc .d-ah { left: 44px; top: 12px; width: 30px; height: 4px; border-radius: 2px; background: #D1D5DB; }
+.d-doc .d-at { left: 24px; top: 24px; width: 70px; height: 8px; border-radius: 3px; background: #111; animation: d-ty1 var(--t) linear infinite; }
+.d-doc .d-ad { right: 14px; top: 42px; width: 36px; height: 4px; border-radius: 2px; background: #6B7280; transform-origin: right center; animation: d-ty2 var(--t) linear infinite; }
+.d-doc .d-ab { left: 14px; height: 4px; border-radius: 2px; background: #9CA3AF; transform-origin: left center; }
+.d-doc .d-ab1 { top: 60px; width: 90px; animation: d-ty3 var(--t) linear infinite; }
+.d-doc .d-ab2 { top: 70px; width: 84px; animation: d-ty3 var(--t) linear infinite; }
+.d-doc .d-ab3 { top: 80px; width: 56px; animation: d-ty4 var(--t) linear infinite; }
+.d-doc .d-seal { left: 84px; top: 100px; width: 20px; height: 20px; border: 2px solid #E5484D; border-radius: 50%; opacity: .9; transform: rotate(-12deg); animation: d-seal var(--t) infinite; }
+.d-doc .d-pdf { left: 226px; top: 144px; padding: 0 9px; border-radius: 99px; background: #E5484D; color: #fff; font-size: 9px; line-height: 18px; opacity: 0; animation: d-pdf var(--t) infinite; }
+.d-doc .d-cur { animation: d-dcur var(--t) ease-in-out infinite; }
+@keyframes d-ty1 { 0%, 6% { transform: scaleX(0); } 20%, 96% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
+@keyframes d-ty2 { 0%, 22% { transform: scaleX(0); } 32%, 96% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
+@keyframes d-ty3 { 0%, 34% { transform: scaleX(0); } 46%, 96% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
+@keyframes d-ty4 { 0%, 46% { transform: scaleX(0); } 56%, 96% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
+@keyframes d-seal { 0%, 58% { opacity: 0; transform: scale(1.6) rotate(-12deg); } 62%, 96% { opacity: .9; transform: scale(1) rotate(-12deg); } 100% { opacity: 0; transform: scale(1) rotate(-12deg); } }
+@keyframes d-dbtn { 0%, 66% { transform: scale(1); } 69% { transform: scale(.94); } 72%, 100% { transform: scale(1); } }
+@keyframes d-pdf { 0%, 70% { opacity: 0; transform: translateY(6px) scale(.8); } 76%, 94% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(0) scale(1); } }
+@keyframes d-dcur { 0%, 56% { transform: translate(100px, 118px); } 64%, 74% { transform: translate(70px, 156px); } 100% { transform: translate(100px, 118px); } }
+
+/* ── 발표 슬라이드: → 키로 한 장씩 넘김 ── */
+.d-slide { background: #17171A; }
+.d-slide .d-vp { position: absolute; left: 20px; top: 10px; width: 260px; height: 146px; overflow: hidden; border-radius: 6px; }
+.d-slide .d-strip { position: absolute; left: 0; top: 0; width: 800px; height: 146px; animation: d-strip var(--t) cubic-bezier(.7, 0, .3, 1) infinite; }
+.d-slide .d-sl { top: 0; width: 260px; height: 146px; border-radius: 6px; overflow: hidden; }
+.d-slide .d-sl1 { left: 0; background: linear-gradient(135deg, #1E1B4B, #4338CA); }
+.d-slide .d-sl1 .d-a { left: 24px; top: 44px; width: 160px; height: 14px; border-radius: 4px; background: #fff; }
+.d-slide .d-sl1 .d-b { left: 24px; top: 64px; width: 110px; height: 14px; border-radius: 4px; background: #fff; }
+.d-slide .d-sl1 .d-c { left: 24px; top: 96px; font-size: 9px; color: #C7D2FE; }
+.d-slide .d-sl2 { left: 270px; background: #fff; }
+.d-slide .d-sl2 .d-h { left: 20px; top: 20px; width: 120px; height: 12px; border-radius: 4px; background: #111; }
+.d-slide .d-sl2 .d-li { left: 32px; width: 100px; height: 6px; border-radius: 3px; background: #CBD5E1; }
+.d-slide .d-sl2 .d-li::before { content: ""; position: absolute; left: -11px; top: 0; width: 6px; height: 6px; border-radius: 50%; background: #4338CA; }
+.d-slide .d-sl2 .d-im { left: 158px; top: 42px; width: 82px; height: 62px; border-radius: 6px; background: linear-gradient(135deg, #BFD2FF, #E0E7FF); }
+.d-slide .d-sl3 { left: 540px; background: #34E05B; }
+.d-slide .d-sl3 u { left: 0; top: 60px; width: 100%; text-align: center; font-size: 20px; font-weight: 800; color: #0B0B0B; }
+.d-slide .d-prog { left: 20px; top: 166px; width: 180px; height: 4px; border-radius: 2px; background: #3F3F46; overflow: hidden; }
+.d-slide .d-prog u { left: 0; top: 0; width: 100%; height: 100%; background: #34E05B; transform-origin: left center; animation: d-prog var(--t) cubic-bezier(.7, 0, .3, 1) infinite; }
+.d-slide .d-key { left: 210px; top: 160px; width: 18px; height: 15px; border-radius: 4px; border: 1px solid #52525B; border-bottom-width: 2px; color: #D4D4D8; font-size: 9px; line-height: 12px; text-align: center; animation: d-keyp var(--t) infinite; }
+.d-slide .d-no { left: 236px; top: 161px; width: 44px; height: 14px; }
+.d-slide .d-no u { right: 0; top: 0; font-size: 9px; color: #A1A1AA; opacity: 0; }
+.d-slide .d-n1 { opacity: 1; animation: d-sn1 var(--t) infinite; }
+.d-slide .d-n2 { animation: d-sn2 var(--t) infinite; }
+.d-slide .d-n3 { animation: d-sn3 var(--t) infinite; }
+@keyframes d-strip { 0%, 28% { transform: translateX(0); } 34%, 60% { transform: translateX(-270px); } 66%, 92% { transform: translateX(-540px); } 98%, 100% { transform: translateX(0); } }
+@keyframes d-prog { 0%, 28% { transform: scaleX(.333); } 34%, 60% { transform: scaleX(.667); } 66%, 92% { transform: scaleX(1); } 98%, 100% { transform: scaleX(.333); } }
+@keyframes d-keyp { 0%, 26%, 31%, 58%, 63%, 100% { background: transparent; transform: translateY(0); } 28%, 60% { background: #3F3F46; transform: translateY(1px); } }
+@keyframes d-sn1 { 0%, 30% { opacity: 1; } 32%, 94% { opacity: 0; } 96%, 100% { opacity: 1; } }
+@keyframes d-sn2 { 0%, 30% { opacity: 0; } 32%, 62% { opacity: 1; } 64%, 100% { opacity: 0; } }
+@keyframes d-sn3 { 0%, 62% { opacity: 0; } 64%, 94% { opacity: 1; } 96%, 100% { opacity: 0; } }
+
+/* ── 흐름도: 왼쪽에 한 줄 쓰면 오른쪽에 그림이 하나씩 ── */
+.d-flow { background: radial-gradient(#E5E7EB 1px, transparent 1.2px) 0 0 / 12px 12px, #fff; }
+.d-flow .d-code { left: 10px; top: 10px; width: 116px; height: 160px; border-radius: 8px; background: #1E1E2E; }
+.d-flow .d-code u { left: 9px; font-family: var(--mono); font-size: 7.5px; font-weight: 600; color: #CDD6F4; }
+.d-flow .d-code u:first-child { color: #F5C2E7; }
+.d-flow .d-c1 { animation: d-type1 var(--t) linear infinite; }
+.d-flow .d-c2 { animation: d-type2 var(--t) linear infinite; }
+.d-flow .d-c3 { animation: d-type3 var(--t) linear infinite; }
+.d-flow .d-nd { width: 60px; height: 22px; border-radius: 5px; border: 1.5px solid #4F46E5; background: #EEF2FF; color: #312E81; font-size: 9px; line-height: 19px; text-align: center; }
+.d-flow .d-nd.d-ok { left: 248px; top: 93px; width: 42px; border-color: #16A34A; background: #DCFCE7; color: #166534; }
+.d-flow .d-ar { width: 2px; background: #6B7280; }
+.d-flow .d-ar::after { content: ""; position: absolute; left: -3px; bottom: -5px; width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 5px solid #6B7280; }
+.d-flow .d-ar.d-ah { left: 231px; top: 103px; width: 11px; height: 2px; }
+.d-flow .d-ar.d-ah::after { left: auto; right: -5px; top: -3px; bottom: auto; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 5px solid #6B7280; border-right: 0; }
+.d-flow .d-dia { left: 196px; top: 90px; width: 28px; height: 28px; border-radius: 3px; border: 1.5px solid #D97706; background: #FFFBEB; transform: rotate(45deg); }
+.d-flow .d-dt { left: 190px; top: 98px; width: 40px; text-align: center; font-size: 8.5px; color: #92400E; }
+.d-flow .d-g1 { animation: d-fg1 var(--t) ease-out infinite; }
+.d-flow .d-g2 { animation: d-fg2 var(--t) ease-out infinite; }
+.d-flow .d-g3 { animation: d-fg3 var(--t) ease-out infinite; }
+@keyframes d-type1 { 0%, 4% { clip-path: inset(0 100% 0 0); } 14%, 96% { clip-path: inset(0 0 0 0); } 100% { clip-path: inset(0 100% 0 0); } }
+@keyframes d-type2 { 0%, 26% { clip-path: inset(0 100% 0 0); } 36%, 96% { clip-path: inset(0 0 0 0); } 100% { clip-path: inset(0 100% 0 0); } }
+@keyframes d-type3 { 0%, 48% { clip-path: inset(0 100% 0 0); } 58%, 96% { clip-path: inset(0 0 0 0); } 100% { clip-path: inset(0 100% 0 0); } }
+@keyframes d-fg1 { 0%, 14% { opacity: 0; scale: .6; } 20%, 94% { opacity: 1; scale: 1; } 100% { opacity: 0; scale: 1; } }
+@keyframes d-fg2 { 0%, 36% { opacity: 0; scale: .6; } 42%, 94% { opacity: 1; scale: 1; } 100% { opacity: 0; scale: 1; } }
+@keyframes d-fg3 { 0%, 58% { opacity: 0; scale: .6; } 64%, 94% { opacity: 1; scale: 1; } 100% { opacity: 0; scale: 1; } }
+
 /* 움직임 줄이기를 켠 기기에서는 멈춘 화면만 보여 준다 */
 @media (prefers-reduced-motion: reduce) {
   .dm, .dm * { animation: none !important; }

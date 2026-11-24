@@ -162,17 +162,56 @@
   </section>
 </section>
 
-<!-- ───────── 02 프롬프트 ───────── -->
-<section class="screen" data-screen="2" hidden>
+<!-- ───────── 02 프롬프트: 무엇을 만들지 고르기 (#2) ───────── -->
+<section class="screen" data-screen="2" data-view="pick" hidden>
   <header class="screen-head">
     <div>
       <p class="eyebrow">02 · 프롬프트 만들기</p>
-      <h2 tabindex="-1">성취기준이 먼저,<br>기술은 그다음</h2>
+      <h2 tabindex="-1">무엇을<br>만들까요?</h2>
+    </div>
+    <p class="head-note">고른 뒤에도 언제든 바꿀 수 있고,<br>두 쪽에 쓴 내용은 따로 저장됩니다.</p>
+  </header>
+
+  <div class="picks">
+    <a class="pick" href="#2/lesson" data-pick="lesson">
+      <span class="pick-tag" aria-hidden="true">A</span>
+      <span class="pick-now" hidden>작성 중</span>
+      <h3>성취기준 기반 수업</h3>
+      <p>학생이 수업에서 쓰는 앱. 성취기준과 학습 목표에서 출발합니다.</p>
+      <ol class="pick-flow" aria-label="작성 순서"><li>성취기준·목표</li><li>형태</li><li>분위기</li><li>앱 설명</li></ol>
+      <p class="pick-ex"><b>예</b>카드 분류 · 퀴즈 · 시뮬레이션 · 지도 탐구 · 3D 웹게임</p>
+      <span class="pick-go">시작하기 →</span>
+    </a>
+    <a class="pick" href="#2/work" data-pick="work">
+      <span class="pick-tag" aria-hidden="true">B</span>
+      <span class="pick-now" hidden>작성 중</span>
+      <h3>업무 및 기타</h3>
+      <p>업무 도구, 개인 프로젝트, 무엇이든. 형태·분위기·설명만으로 자유롭게 만듭니다.</p>
+      <ol class="pick-flow" aria-label="작성 순서"><li>형태</li><li>분위기</li><li>앱 설명</li></ol>
+      <p class="pick-ex"><b>예</b>대시보드 · 칸반 보드 · 캘린더 · 엑셀 정리 · 발표 슬라이드</p>
+      <span class="pick-go">시작하기 →</span>
+    </a>
+  </div>
+  <p class="note">오른쪽 ‘채팅 AI · 코딩 에이전트’ 선택과 03 제작 · 04 배포 과정은 두 가지 모두 같습니다.</p>
+</section>
+
+<!-- ───────── 02 프롬프트: 만들기 (#2/lesson · #2/work) ─────────
+     data-only="lesson|work" 가 붙은 부분은 고른 쪽에서만 보입니다. -->
+<section class="screen" data-screen="2" data-view="build" hidden>
+  <header class="screen-head">
+    <div>
+      <div class="track-row">
+        <p class="eyebrow">02 · 프롬프트 만들기</p>
+        <nav class="seg small" aria-label="만들 것">
+          <a href="#2/lesson" data-track-link="lesson">성취기준 기반 수업</a>
+          <a href="#2/work" data-track-link="work">업무 및 기타</a>
+        </nav>
+      </div>
+      <h2 tabindex="-1"><span data-only="lesson">성취기준이 먼저,<br>기술은 그다음</span><span data-only="work" hidden>자유롭게 만들되,<br>구체적으로 말한다</span></h2>
     </div>
     <div class="head-actions">
       <span class="muted">예시로 채우기</span>
-      <button type="button" class="chip plain" data-example="sort">카드 분류</button>
-      <button type="button" class="chip plain" data-example="3d">3D 웹게임</button>
+      <span class="ex-btns" id="exBtns"></span>
       <button type="button" class="text-btn" id="reset">처음부터</button>
     </div>
   </header>
@@ -180,7 +219,7 @@
   <div class="builder">
     <div class="form">
 
-      <section class="step" id="st1" aria-labelledby="st1h">
+      <section class="step" id="st1" aria-labelledby="st1h" data-only="lesson">
         <header><b class="num">1</b><h3 id="st1h">무엇을 배우나</h3></header>
         <div class="grid2">
           <label class="f"><span>교과</span><input type="text" data-bind="subject" placeholder="통합사회2" autocomplete="off"></label>
@@ -211,13 +250,15 @@
       <section class="step" id="st3" aria-labelledby="st3h">
         <header><b class="num">3</b><h3 id="st3h">어떤 분위기인가</h3></header>
         <div class="styles" id="styles" role="group" aria-labelledby="st3h"></div>
+        <label class="f" id="customStyleWrap" hidden><span>어떤 분위기인가요?</span>
+          <input type="text" data-bind="customStyle" placeholder="예: 노션처럼 흰 바탕에 회색 글자, 장식 없이 글자 중심으로" autocomplete="off"></label>
         <div class="f"><span id="accLabel">강조색</span><div class="swatches" id="accents" role="group" aria-labelledby="accLabel"></div></div>
         <label class="f"><span>더 원하는 느낌 <em>선택</em></span>
           <input type="text" data-bind="styleNote" placeholder="예: 제목은 크게, 사진 없이 도형만" autocomplete="off"></label>
       </section>
 
       <section class="step" id="st4" aria-labelledby="st4h">
-        <header><b class="num">4</b><h3 id="st4h">어떤 앱이고, 어떻게 작동하면 좋겠나요?</h3></header>
+        <header><b class="num">4</b><h3 id="st4h"><span data-only="lesson">어떤 앱이고, 어떻게 작동하면 좋겠나요?</span><span data-only="work" hidden>어떤 앱인지 자유롭게 써 주세요</span></h3></header>
         <label class="f"><span>앱 이름 <em>선택</em></span>
           <input type="text" data-bind="appName" placeholder="금융 자산 카드 분류" autocomplete="off"></label>
         <div class="f">
@@ -225,9 +266,23 @@
           <div class="lblrow tip" id="descTipWrap">
             <label for="desc">앱 설명</label>
             <button type="button" class="tip-btn" id="descTipBtn" aria-expanded="false" aria-controls="descTip">작성 가이드</button>
-            <span class="tip-hint">페이지별로, 어떤 기능이 있으면 좋을지 구체적으로</span>
+            <span class="tip-hint" data-only="lesson">페이지별로, 어떤 기능이 있으면 좋을지 구체적으로</span>
+            <span class="tip-hint" data-only="work" hidden>누가 왜 쓰는지, 화면별로 어떤 기능이 있으면 좋을지</span>
             <div class="tip-pop" id="descTip" role="note">
-              <div class="tip-card">
+              <div class="tip-card" data-only="work" hidden>
+                <p class="tip-title">누가 왜 쓰는지 한 줄, 그다음 화면별로 무엇을 하면 어떻게 되는지 씁니다.</p>
+                <p class="tip-lbl is-bad">모호한 예</p>
+                <p class="tip-q">“업무에 쓸 편리한 관리 앱”</p>
+                <p class="tip-lbl is-good">화면별로 쓴 예</p>
+                <ol class="tip-ex">
+                  <li><b>누가 · 왜</b><span>방과후 담당 교사가 신청 엑셀을 올려 강좌별 현황을 한눈에 보려고 쓴다</span></li>
+                  <li><b>1. 파일 올리기</b><span>엑셀 파일을 끌어다 놓으면 신청 명단이 표로 보인다</span></li>
+                  <li><b>2. 현황</b><span>강좌별 신청 인원을 막대그래프로 보여 주고, 정원을 넘은 강좌에는 ‘초과’ 표시를 붙인다</span></li>
+                  <li><b>3. 저장</b><span>강좌별로 나눈 명단을 엑셀 파일로 저장한다</span></li>
+                </ol>
+                <p class="tip-foot">화면마다 쓸 것: 무엇을 보여 주나 · 무엇을 누르나 · 누르면 어떻게 되나</p>
+              </div>
+              <div class="tip-card" data-only="lesson">
                 <p class="tip-title">페이지별로, 어떤 기능이 있으면 좋을지 구체적으로 씁니다.</p>
                 <p class="tip-lbl is-bad">모호한 예</p>
                 <p class="tip-q">“금융 자산을 재미있게 배우는 앱”</p>
@@ -307,7 +362,8 @@
       <b class="num">1</b>
       <div class="rbody">
         <h3>내 AI에 붙여넣기</h3>
-        <p class="muted">교과서 PDF·성취기준 파일도 함께 첨부합니다.</p>
+        <p class="muted" data-only="lesson">교과서 PDF·성취기준 파일도 함께 첨부합니다.</p>
+        <p class="muted" data-only="work" hidden>참고할 자료(엑셀 예시·양식 파일)가 있으면 함께 첨부합니다.</p>
         <div class="btns">
           <button type="button" class="btn primary" data-copy-prompt>프롬프트 복사</button>
           <a class="btn" href="https://gemini.google.com/" target="_blank" rel="noopener">Gemini ↗</a>
@@ -360,9 +416,9 @@
         <h3>수정 요청도 구체적으로</h3>
         <p class="muted"><s>“분류가 이상해. 고쳐 줘.”</s></p>
         <div class="fix">
-          <label class="f"><span>어디에서</span><input type="text" data-fix="where" placeholder="분류하기 화면의 주식 카드" autocomplete="off"></label>
-          <label class="f"><span>지금은</span><input type="text" data-fix="now" placeholder="'안전성 높음' 칸에 놓아도 정답으로 처리된다" autocomplete="off"></label>
-          <label class="f"><span>이렇게 되어야 한다</span><input type="text" data-fix="want" placeholder="'수익성 높음' 칸에 놓을 때만 정답, 오답이면 '원금이 보장되나요?' 힌트" autocomplete="off"></label>
+          <label class="f"><span>어디에서</span><input type="text" data-fix="where" autocomplete="off"></label>
+          <label class="f"><span>지금은</span><input type="text" data-fix="now" autocomplete="off"></label>
+          <label class="f"><span>이렇게 되어야 한다</span><input type="text" data-fix="want" autocomplete="off"></label>
         </div>
         <div class="req">
           <p id="fixOut"></p>

@@ -212,6 +212,50 @@ mark { background: linear-gradient(transparent 56%, var(--green-bright) 56%, var
 .text-btn { border: 0; background: none; color: var(--muted); font-weight: 650; font-size: 15px; text-decoration: underline; text-underline-offset: 4px; padding: 6px 8px; }
 .text-btn:hover { color: var(--ink); }
 
+/* ── 02 프롬프트: 무엇을 만들지 고르기 ── */
+.head-note { font-size: 15px; font-weight: 600; color: var(--muted); line-height: 1.55; text-align: right; }
+.picks { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.pick {
+  position: relative; display: flex; flex-direction: column; min-height: 380px;
+  background: var(--card); border: 1.5px solid var(--line2); border-radius: 28px;
+  padding: clamp(24px, 3.4vw, 40px); color: var(--ink); text-decoration: none;
+  transition: border-color .15s, transform .15s, box-shadow .15s;
+}
+.pick:hover { border-color: var(--ink); transform: translateY(-3px); box-shadow: 0 16px 36px rgba(0, 0, 0, .08); }
+.pick.cur { border-color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+.pick.cur:hover { box-shadow: inset 0 0 0 1.5px var(--ink), 0 16px 36px rgba(0, 0, 0, .08); }
+.pick-tag {
+  width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--ink); color: #fff; font-family: var(--mono); font-size: 14px; font-weight: 700;
+}
+.pick-now {
+  position: absolute; top: clamp(24px, 3.4vw, 40px); right: clamp(24px, 3.4vw, 40px);
+  background: var(--green-soft); color: var(--green); border-radius: 999px; padding: 3px 12px;
+  font-size: 13px; font-weight: 800;
+}
+.pick h3 { margin-top: 24px; font-size: clamp(30px, 3.8vw, 48px); font-weight: 800; letter-spacing: -.04em; line-height: 1.1; }
+.pick > p { margin-top: 12px; font-size: 17px; color: var(--ink2); }
+.pick-flow { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 6px 0; font-weight: 750; font-size: 15.5px; }
+.pick-flow li + li::before { content: "→"; margin: 0 9px; color: var(--green); }
+.pick > .pick-ex { margin: 14px 0 28px; font-size: 14.5px; color: var(--muted); }
+.pick-ex b { display: inline-block; margin-right: 8px; padding: 0 8px; border-radius: 6px; background: var(--bg); color: var(--ink2); font-size: 12.5px; }
+.pick-go {
+  align-self: flex-start; margin-top: auto;
+  background: var(--ink); color: #fff; border-radius: 999px; padding: 12px 22px; font-weight: 800; font-size: 16px;
+}
+.pick:hover .pick-go { background: #2A2927; }
+.picks + .note { margin-top: 18px; }
+
+/* 만들기 화면 위쪽: 갈래 바꾸기 */
+.track-row { display: flex; align-items: center; gap: 8px 14px; flex-wrap: wrap; margin-bottom: 14px; }
+.track-row .eyebrow { margin: 0; }
+.seg a { border-radius: 999px; padding: 8px 18px; font-weight: 700; font-size: 15px; color: var(--muted); text-decoration: none; }
+.seg a:hover { color: var(--ink); }
+.seg a[aria-current="page"] { background: var(--ink); color: #fff; }
+.seg.small { padding: 3px; }
+.seg.small a { padding: 5px 13px; font-size: 13.5px; }
+.ex-btns { display: contents; }
+
 /* ── 02 프롬프트 ── */
 .builder { display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, 460px); gap: 24px; align-items: start; }
 .step { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: clamp(18px, 2.4vw, 28px); margin-bottom: 14px; }
@@ -258,7 +302,8 @@ input[type="text"]:focus, textarea:focus { outline: none; border-color: var(--in
 .say dt { font-family: var(--mono); font-size: 13px; font-weight: 700; background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 0 7px; }
 .say dd { color: var(--ink2); }
 
-.styles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 18px; }
+/* 넓으면 4칸, 좁아지면 3칸 (카드 한 장이 132px보다 좁아지지 않게) */
+.styles { display: grid; grid-template-columns: repeat(auto-fill, minmax(max(132px, calc(25% - 6px)), 1fr)); gap: 8px; margin-bottom: 18px; }
 .style { text-align: left; border: 1.5px solid var(--line2); background: var(--card); border-radius: 16px; padding: 8px 8px 11px; display: grid; gap: 9px; }
 .style b { font-size: 15px; font-weight: 750; padding: 0 5px; }
 .style:hover { border-color: var(--ink); }
@@ -277,6 +322,16 @@ input[type="text"]:focus, textarea:focus { outline: none; border-color: var(--in
 .pvw.lk-glow u { box-shadow: 0 0 10px var(--acc); }
 .pvw.lk-note { background-image: repeating-linear-gradient(transparent 0 12px, rgba(31,41,55,.12) 12px 13px); background-color: var(--b); }
 .pvw.lk-note u { height: 8px; border-radius: 0; align-self: end; opacity: .75; }
+.pvw.lk-saas { box-shadow: inset 16px 0 0 #E2E8F0; padding-left: 24px; }
+.pvw.lk-saas u, .pvw.lk-saas s { border-radius: 5px; }
+.pvw.lk-saas s { box-shadow: 0 0 0 1px #E2E8F0, 0 1px 3px rgba(15, 23, 42, .12); }
+.pvw.lk-custom {
+  justify-items: center; gap: 2px; border: 1.5px dashed var(--line2);
+  background: repeating-linear-gradient(-45deg, var(--paper) 0 8px, var(--bg) 8px 16px);
+}
+.pvw.lk-custom em { font-style: normal; font-size: 20px; line-height: 1; }
+.pvw.lk-custom small { font-size: 11.5px; font-weight: 700; color: var(--muted); }
+.style[aria-pressed="true"] .pvw.lk-custom { border-color: var(--ink); }
 
 .swatches { display: flex; gap: 8px; flex-wrap: wrap; }
 .sw { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--line2); background: var(--card); border-radius: 999px; padding: 5px 13px 5px 6px; font-weight: 650; font-size: 14.5px; }
@@ -455,7 +510,9 @@ input[type="text"]:focus, textarea:focus { outline: none; border-color: var(--in
   .hero { grid-template-columns: 1fr; min-height: 0; gap: 28px; }
   .arch-row { grid-template-columns: 1fr; gap: 16px; }
   .wire { justify-self: center; transform: rotate(90deg); line-height: 1; }
-  .three, .versus, .adv, .review, .fix { grid-template-columns: 1fr; }
+  .three, .versus, .adv, .review, .fix, .picks { grid-template-columns: 1fr; }
+  .pick { min-height: 0; }
+  .head-note { text-align: left; }
   .three { gap: 28px; }
   .good div { grid-template-columns: 1fr; gap: 2px; }
   .styles { grid-template-columns: 1fr 1fr; }
@@ -465,5 +522,6 @@ input[type="text"]:focus, textarea:focus { outline: none; border-color: var(--in
   .aside { margin-left: 0; width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .toast { transition: none; }
+  .toast, .pick { transition: none; }
+  .pick:hover { transform: none; }
 }
